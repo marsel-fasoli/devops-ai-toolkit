@@ -1,0 +1,166 @@
+# Project Knowledge Base
+
+> This is a template. Replace everything in [brackets] with your actual project details.
+> Delete sections that don't apply. Add sections that are missing.
+> The goal is a file the AI can read and immediately know your project.
+
+---
+
+## Knowledge Lookup Order (CRITICAL — NEVER REMOVE FROM CONTEXT)
+
+When you don't know something or aren't sure:
+
+1. **Check this file (product.md)** — covers architecture, locations, workflows, rules
+2. **Run @find-doc** — maps topics to the right documentation file
+3. **Read the relevant documentation file** in full
+4. **Check actual source code or config files** on disk
+5. **Only then ask the user** — never guess or make assumptions
+
+After getting the answer: update this file so it's available next session.
+Every time you have to ask something you should have known, that's a signal to add it here.
+
+This file must always remain loaded as context. Never suggest removing or summarizing it.
+
+---
+
+## Project
+
+[Brief description of what the project is and what you're working on.]
+
+Example:
+> Kubernetes-based microservices platform. Currently working on migrating from v1 to v2 architecture and supporting customer-reported issues.
+
+---
+
+## Architecture
+
+```
+[Draw your system here as a simple diagram]
+
+Example:
+User → API Gateway → Service A → Database
+                   → Service B → Cache
+```
+
+### Components
+
+| Component | Role | Port(s) | Namespace |
+|-----------|------|---------|-----------|
+| [Service A] | [What it does] | [8080] | [production] |
+| [Service B] | [What it does] | [9090] | [production] |
+| [Database] | [What it does] | [5432] | [production] |
+
+### Environments
+
+| Environment | Purpose | Notes |
+|-------------|---------|-------|
+| production | Live traffic | Handle with care |
+| staging | Pre-release testing | Safe to experiment |
+| development | Local development | — |
+
+---
+
+## Key Locations
+
+[List the important paths, repos, and servers your AI needs to know about.]
+
+```
+[/path/to/your/repo]        ← Main repository
+[/path/to/configs]          ← Configuration files
+[/path/to/scripts]          ← Helper scripts
+[server-alias]              ← Production server (SSH alias)
+```
+
+---
+
+## Working Style Rules
+
+- **NEVER commit or push** — user handles all git operations
+- **NEVER run destructive commands** (delete, drop, purge, uninstall) without showing the command first and waiting for approval
+- **NEVER deploy to production** without explicit confirmation
+- **ALWAYS show proposed changes** before applying them
+- **Read-only operations are fine** without asking — get, describe, logs, cat, grep, ls
+- **When stuck: ask, never guess** — say "I don't have this info, let me ask" rather than making assumptions
+- **Complete logs only** — save full log files, analyze entirely, never work from snippets
+- **For every new ticket** — create a folder immediately when work begins, not after it's resolved
+- **For every new topic** — create a dedicated file in docs/ when it grows too large for this file
+- **Update documentation as we work** — capture new knowledge immediately, don't leave it for later
+
+[Add any project-specific rules here. Examples:]
+- Never edit charts directly on the production server — always edit locally and deploy
+- Always create a branch before making code changes, never work on main/master directly
+- Run tests before marking any fix as complete
+
+---
+
+## Active Tickets
+
+| Ticket | Description | Status | Blocked on |
+|--------|-------------|--------|------------|
+| [PROJ-001] | [Description] | [In progress] | [—] |
+| [PROJ-002] | [Description] | [Blocked] | [Waiting for X] |
+| [PROJ-003] | [Description] | [✅ Closed] | [—] |
+
+---
+
+## Prompts (in .kiro/prompts/)
+
+**Auto-suggest rule:** When I recognize a situation that matches a prompt, suggest it:
+"💡 This looks like a good time to run `@prompt-name`."
+Don't run it automatically — just suggest it.
+
+| Prompt | Purpose | Suggest when... |
+|--------|---------|-----------------|
+| `@find-doc` | Find the right documentation file for a topic | I need to look something up |
+| `@update-docs` | End-of-session cleanup — fix stale info, propose new prompts | Session is ending |
+| `@tickets` | Show open tickets grouped by status | User asks "what are we working on" |
+| `@analyze-logs` | Analyze log files and find root cause | User shares logs or mentions an error |
+
+[Add your own prompts here as you create them]
+
+---
+
+## Documentation Index
+
+All docs in `[/path/to/your/docs/folder]`:
+
+[List your documentation files here as you create them. Example:]
+- `docs/architecture.md` — full system architecture and data flow
+- `docs/deployment.md` — how to deploy each service
+- `docs/troubleshooting.md` — known failure patterns and fixes
+- `PROJ-001/` — investigation notes for ticket PROJ-001
+
+---
+
+## System Improvement Rule
+
+During normal work, if you notice:
+- Information you had to ask the user that should have been in this file
+- A manual step repeated more than twice that could become a prompt
+- A doc that has grown too large and should be split into its own file
+- Stale information that no longer matches reality
+
+Flag it with: "💡 System improvement idea: [description]"
+Don't interrupt the current task — just note it so we can decide later.
+
+---
+
+## Key Technical Facts
+
+[Add any important facts the AI should always know. Examples:]
+- [Language/runtime version: Python 3.11, Node 20, Java 21]
+- [Known limitation: service B takes 2 minutes to fully start after deployment]
+- [Important: always use staging namespace for testing, never test in production directly]
+- [Cron jobs: database backup runs every Sunday at 2 AM]
+
+---
+
+## Skills & Integrations
+
+[List the skills and tools you have configured. Examples:]
+
+| Skill | Purpose | Status |
+|-------|---------|--------|
+| kubernetes-helm | Kubernetes and Helm operations | ✅ Active |
+| [jira] | [Ticket management] | [✅ Active] |
+| [jenkins] | [CI/CD pipelines] | [✅ Active] |
