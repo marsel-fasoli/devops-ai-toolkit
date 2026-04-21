@@ -1,0 +1,7 @@
+{
+  "name": "kubernetes-helm",
+  "version": "1.0.0",
+  "description": "Kubernetes and Helm operations — navigating namespaces, debugging pods, reading logs, managing Helm releases, and troubleshooting common failures.",
+  "when_to_use": "Load this skill at the start of any session involving Kubernetes or Helm work — deploying, debugging, log analysis, Helm chart management, or cluster troubleshooting.",
+  "tags": ["kubernetes", "k8s", "helm", "devops", "infrastructure", "containers"]
+}
